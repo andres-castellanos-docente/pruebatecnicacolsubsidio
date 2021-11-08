@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DialogRegMovimientoComponent } from './dialog-reg-movimiento.component';
-import {MatDialog, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {SharedModule} from "../../../../../SharedModule";
@@ -15,9 +15,7 @@ describe('DialogRegMovimientoComponent', () => {
     await TestBed.configureTestingModule({
       imports: [SharedModule, HttpClientTestingModule],
       providers: [
-        MatDialog,
-        MatDialogRef,
-        { provide: MatDialog }
+        { provide: MAT_DIALOG_DATA, useValue: {} }
       ],
       declarations: [ DialogRegMovimientoComponent ]
     })

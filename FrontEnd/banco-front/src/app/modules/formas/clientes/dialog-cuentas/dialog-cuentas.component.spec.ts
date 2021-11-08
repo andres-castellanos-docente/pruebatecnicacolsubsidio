@@ -1,10 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DialogCuentasComponent } from './dialog-cuentas.component';
-import {MatDialog} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {SharedModule} from "../../../../SharedModule";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {CuentasService} from "../../../services/cuentas.service";
 
 describe('DialogCuentasComponent', () => {
   let component: DialogCuentasComponent;
@@ -14,8 +13,8 @@ describe('DialogCuentasComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ DialogCuentasComponent ],
       imports: [SharedModule, HttpClientTestingModule],
-      providers: [CuentasService,
-        { provide: MatDialog }
+      providers: [
+        { provide: MAT_DIALOG_DATA, useValue: {} }
       ]
     })
     .compileComponents();

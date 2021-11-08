@@ -15,7 +15,7 @@ describe('ReporteComponent', () => {
       imports: [SharedModule, HttpClientTestingModule],
       declarations: [ ReporteComponent ],
       providers: [
-        { provide: MatDialog,  DatePipe, DecimalPipe }
+        DatePipe, DecimalPipe
       ]
     })
     .compileComponents();

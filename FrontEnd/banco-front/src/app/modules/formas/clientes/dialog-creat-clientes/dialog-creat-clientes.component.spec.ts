@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DialogCreatClientesComponent } from './dialog-creat-clientes.component';
-import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
@@ -15,7 +15,7 @@ describe('DialogCreatClientesComponent', () => {
       declarations: [ DialogCreatClientesComponent ],
       imports: [SharedModule, HttpClientTestingModule],
       providers: [
-        { provide: MatDialog }
+        { provide: MAT_DIALOG_DATA, useValue: {} }
       ]
     })
     .compileComponents();

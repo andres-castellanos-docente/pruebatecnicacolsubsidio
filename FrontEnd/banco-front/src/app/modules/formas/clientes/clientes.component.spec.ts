@@ -13,7 +13,6 @@ describe('ClientesComponent', () => {
     await TestBed.configureTestingModule({
       imports: [SharedModule, HttpClientTestingModule],
       providers: [ClientesService,
-        { provide: MatDialog },
       ],
       declarations: [ ClientesComponent ]
     })

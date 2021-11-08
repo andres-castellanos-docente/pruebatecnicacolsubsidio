@@ -13,10 +13,7 @@ describe('DialogCreatCuentasComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [SharedModule, HttpClientTestingModule],
-      providers: [CuentasService,
-        MatDialog,
-        MatDialogRef,
-        { provide: MatDialog }
+      providers: [CuentasService
       ],
       declarations: [ DialogCreatCuentasComponent ]
     })

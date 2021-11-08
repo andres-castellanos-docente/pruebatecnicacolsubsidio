@@ -14,7 +14,7 @@ describe('MovimientosService', () => {
       imports: [SharedModule, HttpClientTestingModule],
       declarations: [ MovimientosService ],
       providers: [
-        { provide: MatDialog,  DatePipe, DecimalPipe }
+          DatePipe, DecimalPipe
       ]
     })
       .compileComponents();
