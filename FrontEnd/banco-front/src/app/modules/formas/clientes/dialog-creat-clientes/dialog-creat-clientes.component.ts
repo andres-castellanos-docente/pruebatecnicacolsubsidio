@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, Optional} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {ClientesModel} from '../../../models/clientes.model';
@@ -19,8 +19,8 @@ export class DialogCreatClientesComponent {
   clienteSubmited: boolean | undefined;
 
   constructor(public dialog: MatDialog, private builder: FormBuilder,
-              @Inject(MAT_DIALOG_DATA) public data: any, private cargServ: AppCargandoService,
-              public dialogRef: MatDialogRef<DialogCreatClientesComponent>,
+              @Optional() @Inject(MAT_DIALOG_DATA) public data: any, private cargServ: AppCargandoService,
+              @Optional() public dialogRef: MatDialogRef<DialogCreatClientesComponent>,
               private clientesService: ClientesService) {
 
     this.selectedCliente = data.dataed === null ? new ClientesModel(null, false) : new ClientesModel(data.dataed, false);

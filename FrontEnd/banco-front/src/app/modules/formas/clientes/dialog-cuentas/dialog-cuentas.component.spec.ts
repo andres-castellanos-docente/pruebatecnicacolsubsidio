@@ -4,6 +4,7 @@ import { DialogCuentasComponent } from './dialog-cuentas.component';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {SharedModule} from "../../../../SharedModule";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 describe('DialogCuentasComponent', () => {
   let component: DialogCuentasComponent;
@@ -12,9 +13,9 @@ describe('DialogCuentasComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ DialogCuentasComponent ],
-      imports: [SharedModule, HttpClientTestingModule],
+      imports: [SharedModule, HttpClientTestingModule, BrowserAnimationsModule],
       providers: [
-        { provide: MAT_DIALOG_DATA, useValue: {} }
+        { provide: MatDialogRef, useValue: {} }, { provide: MAT_DIALOG_DATA, useValue: {} }
       ]
     })
     .compileComponents();

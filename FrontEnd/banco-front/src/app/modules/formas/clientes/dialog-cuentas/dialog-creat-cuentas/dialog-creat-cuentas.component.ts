@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, Optional} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ClientesModel} from "../../../../models/clientes.model";
@@ -19,11 +19,11 @@ export class DialogCreatCuentasComponent {
   cuentaForm: FormGroup;
   cuentaSubmited: boolean | undefined;
 
-  constructor(public dialogRef: MatDialogRef<DialogCreatCuentasComponent>, private builder: FormBuilder,
+  constructor(@Optional() public dialogRef: MatDialogRef<DialogCreatCuentasComponent>, private builder: FormBuilder,
               private cargServ: AppCargandoService,
               private cuentasService: CuentasService, public dialog: MatDialog,
-              @Inject(MAT_DIALOG_DATA) public data: any) {
-    this.selectedCuenta = data.dataed === null ? new CuentasModel(null, false) : new CuentasModel(data.dataed, false);
+              @Optional() @Inject(MAT_DIALOG_DATA) public data: any) {
+    this.selectedCuenta = data?.dataed === null ? new CuentasModel(null, false) : new CuentasModel(data?.dataed, false);
     this.cuentaForm = this.builder.group({
       id: [this.selectedCuenta.id, []],
       idCliente: [this.selectedCuenta.idCliente, []],

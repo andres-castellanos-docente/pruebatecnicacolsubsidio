@@ -6,6 +6,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {SharedModule} from "../../../../../SharedModule";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 describe('DialogRegMovimientoComponent', () => {
   let component: DialogRegMovimientoComponent;
@@ -13,9 +14,9 @@ describe('DialogRegMovimientoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SharedModule, HttpClientTestingModule],
+      imports: [SharedModule, HttpClientTestingModule, BrowserAnimationsModule],
       providers: [
-        { provide: MAT_DIALOG_DATA, useValue: {} }
+        { provide: MatDialogRef, useValue: {} }, { provide: MAT_DIALOG_DATA, useValue: {} }
       ],
       declarations: [ DialogRegMovimientoComponent ]
     })

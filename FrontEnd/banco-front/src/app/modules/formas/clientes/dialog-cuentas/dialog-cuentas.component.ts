@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Inject, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Inject, Optional, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {AppCargandoService} from "../../../../appBase/cargando/app.cargando.service";
 import {MatTableDataSource} from "@angular/material/table";
@@ -25,12 +25,12 @@ export class DialogCuentasComponent implements AfterViewInit {
   displayedColumns: string[] = ['editar', 'numero', 'saldo', 'regmovim', 'eliminar'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(public dialog: MatDialog,
+  constructor( public dialog: MatDialog,
               private cuentasService: CuentasService,
-              @Inject(MAT_DIALOG_DATA) public data: any, private cargServ: AppCargandoService,
-              public dialogRef: MatDialogRef<DialogCuentasComponent>) {
-    this.idCliente = data.data.id;
-    this.qualifies = data.data.cuentasByCliente;
+              @Optional() @Inject(MAT_DIALOG_DATA) public data: any, private cargServ: AppCargandoService,
+               @Optional() public dialogRef: MatDialogRef<DialogCuentasComponent>) {
+    this.idCliente = data?.data?.id;
+    this.qualifies = data?.data?.cuentasByCliente;
     this.dataSource = new MatTableDataSource<CuentasModel>(this.qualifies);
   }
 
