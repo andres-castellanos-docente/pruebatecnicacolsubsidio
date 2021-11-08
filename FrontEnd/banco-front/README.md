@@ -1,4 +1,11 @@
 # BancoFront
+# Instalar Dependencias
+Descargar dependencias con "npm install"
+
+# Ejecutar
+iniciar proyecto con "ng serve"
+
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
 
