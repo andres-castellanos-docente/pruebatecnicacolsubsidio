@@ -1,0 +1,63 @@
+<form (ngSubmit)="onSubmitReporte()" [formGroup]="reporteForm" autocomplete="off" [@subirAnimation]>
+  <div class="marginauto flexcontent">
+
+    <mat-form-field appearance="fill" class="matfielddate margright20" [ngClass]="{ 'ng-invalid mat-form-field-invalid':
+    reporteForm.controls['nombre_cliente'].errors && reporteSubmited }">
+      <mat-label>Cliente</mat-label>
+      <input type="text"
+             placeholder="Seleccione Uno"
+             aria-label="Number"
+             matInput
+             formControlName="nombre_cliente"
+             [matAutocomplete]="auto">
+
+      <mat-autocomplete  (optionSelected)="onShopSelectionChanged($event)" autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option.pnombre}}
+        </mat-option>
+      </mat-autocomplete>
+
+
+
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="matfielddate margright20" [ngClass]="{ 'ng-invalid mat-form-field-invalid':
+    reporteForm.controls['fechadesde'].errors && reporteSubmited }">
+      <mat-label>Fecha Desde</mat-label>
+      <input formControlName="fechadesde" matInput [matDatepicker]="pickerini">
+      <mat-datepicker-toggle matSuffix [for]="pickerini"></mat-datepicker-toggle>
+      <mat-datepicker #pickerini></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="matfielddate margright20" [ngClass]="{ 'ng-invalid mat-form-field-invalid':
+    reporteForm.controls['fechahasta'].errors && reporteSubmited }">
+      <mat-label>Fecha Hasta</mat-label>
+      <input formControlName="fechahasta" matInput [matDatepicker]="pickerfin">
+      <mat-datepicker-toggle matSuffix [for]="pickerfin"></mat-datepicker-toggle>
+      <mat-datepicker #pickerfin></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="dcenter">
+    <button class="boton"> Buscar
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
+</form>
+<div *ngIf="cuentasFind && cuentasFind.length === 0 && reporteSubmited && reporteFinded" [@subirAnimation]
+     class="marginauto centerdiv">No se encontraron registros
+</div>
+
+
+<div class="margtop20" *ngIf="cuentasFind && cuentasFind.length>0  && reporteSubmited && reporteFinded" [@subirAnimation]>
+  <div class="dcenter">
+    <button class="boton" (click)="descargarReporte()">Guardar <i class="fas fa-save"></i>
+    </button>
+  </div>
+  <pdf-viewer class="pdf-viewer"
+              (after-load-complete)="handlePdfLoaded()"
+              [class.pdf-viewer--relative]="positionPdfViewerRelative" [src]="pdfSrc"
+              [render-text]="true">
+  </pdf-viewer>
+  <div class="dcenter">
+    <button class="boton" (click)="descargarReporte()">Guardar <i class="fas fa-save"></i>
+    </button>
+  </div>
+</div>

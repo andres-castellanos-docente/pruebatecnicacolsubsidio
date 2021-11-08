@@ -1,0 +1,35 @@
+<div class="layout-menu-content" [@IzADerAnimation]>
+  <div class="layout-menu-title">Menú</div>
+  <ul app-submenu [item]="model" class="layout-menu clearfix dispblock"
+      [@subirAnimationMenu]="app.sidebarActive ? true : false"
+      parentactive=true root=true visible=true>
+  </ul>
+  <ul class="layout-menu layout-tipmenu clearfix dispblock" *ngIf="verTipMenu"
+      [@subirAnimationMenu]="app.sidebarActive ? true : false">
+    <li [ngClass]="{'active-menuitem': mostTipMenu}">
+      <a (click)="mostrarTipMenu()">
+        <i class="fas fa-align-center"></i>
+        <span class="ui-menuitem-text">Tipo Menú</span>
+        <i class="material-icons fa fa-fw fa-angle-down layout-menuitem-toggler"></i>
+      </a>
+      <ul class="layout-menu clearfix dispblock"
+          [@subirAnimationMenu]="app.sidebarActive ? true : false"
+          parentactive=true root=true visible=true>
+        <li class="width200" *ngIf="app.menuHorizontal">
+          <a (click)="cambiarTipMenu(false)">
+            <i class="fas fa-align-left"></i>
+            <span  class="ui-menuitem-text">Vertical</span>
+            <i class="material-icons fa fa-fw"></i>
+          </a>
+        </li>
+        <li *ngIf="!app.menuHorizontal">
+          <a (click)="cambiarTipMenu(true)">
+            <i class="fas fa-align-center"></i>
+            <span class="ui-menuitem-text">Horizontal</span>
+            <i class="material-icons fa fa-fw"></i>
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,53 @@
+<div mat-dialog-title class="flex-container fontEst">
+  <label class="titlematd">Cuentas</label>
+  <button class="titlebar-icon" (click)="Cerrar(false)">
+    <mat-icon class="close-icon">close</mat-icon>
+  </button>
+</div>
+<div mat-dialog-content>
+  <button class="boton margbot10" (click)="createDialog()">Crear <i class="fa fa-plus-square"></i></button>
+  <div class="dcenter">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="editar">
+        <th class="widh60" mat-header-cell *matHeaderCellDef> Editar</th>
+        <td class="tcenter widh60" mat-cell *matCellDef="let element;let i = index;">
+          <button class="botons" (click)="editar(element, i)"><i class="fa fa-edit"></i>
+          </button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="numero">
+        <th class="widh150" mat-header-cell *matHeaderCellDef>Número Cuenta</th>
+        <td class="tcenter widh150" mat-cell
+            *matCellDef="let element"> {{element.numero}} </td>
+      </ng-container>
+      <ng-container matColumnDef="saldo">
+        <th class="widh120" mat-header-cell *matHeaderCellDef>Saldo</th>
+        <td class="tcenter widh120" mat-cell
+            *matCellDef="let element">$  {{element.saldo  | number}} </td>
+      </ng-container>
+      <ng-container matColumnDef="regmovim">
+        <th class="widh80" mat-header-cell *matHeaderCellDef> Registrar Movimiento</th>
+        <td class="tcenter widh80" mat-cell *matCellDef="let element;let i = index;">
+          <button class="botons" (click)="regMovimiento(element, i)">
+            <i class="fas fa-money-bill-wave"></i>
+          </button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="eliminar">
+        <th class="widh80" mat-header-cell *matHeaderCellDef> Eliminar</th>
+        <td class="tcenter widh80" mat-cell *matCellDef="let element;let i = index;">
+          <button class="botons" (click)="eliminar(element, i)"><i class="fa fa-trash"></i>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  <div *ngIf="dataSource && dataSource.data.length === 0" class="dcenter">No se encontraron registros</div>
+  <mat-paginator class="matselect" [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons></mat-paginator>
+</div>
+<div mat-dialog-actions class="dcenter">
+  <button class="boton margleft20" (click)="Cerrar(false)">Cerrar <i class="fas fa-window-close"></i></button>
+</div>

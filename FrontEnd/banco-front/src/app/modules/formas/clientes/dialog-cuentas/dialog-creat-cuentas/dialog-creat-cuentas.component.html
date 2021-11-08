@@ -1,0 +1,24 @@
+<div mat-dialog-title class="flex-container fontEst">
+  <label class="titlematd">Cuentas</label>
+  <button class="titlebar-icon" (click)="Cerrar(false)">
+    <mat-icon class="close-icon">close</mat-icon>
+  </button>
+</div>
+<form (ngSubmit)="onSubmitCrear()" [formGroup]="cuentaForm" autocomplete="off">
+  <div mat-dialog-content>
+    <div class="flexcontent">
+      <mat-form-field class="margright20" appearance="fill"
+                      [ngClass]="{ 'ng-invalid mat-form-field-invalid':  cuentaForm.controls['numero'].errors && cuentaSubmited }">
+        <mat-label>Número</mat-label>
+        <input formControlName="numero" maxlength="80" type="text" class="inputtext" matInput>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="dcenter" mat-dialog-actions>
+    <button class="boton"> Guardar
+      <i class="fa fa-save"></i>
+    </button>
+    <button class="boton margleft20" (click)="Cerrar(false); $event.preventDefault()">Cancelar<i class="fa fa-ban"></i>
+    </button>
+  </div>
+</form>

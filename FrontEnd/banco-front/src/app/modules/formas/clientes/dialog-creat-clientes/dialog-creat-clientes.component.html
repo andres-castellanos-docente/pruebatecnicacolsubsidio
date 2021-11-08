@@ -1,0 +1,47 @@
+<div mat-dialog-title class="flex-container fontEst">
+  <label class="titlematd">Clientes</label>
+  <button class="titlebar-icon" (click)="Close(false)">
+    <mat-icon class="close-icon">close</mat-icon>
+  </button>
+</div>
+<form (ngSubmit)="onSubmitCrear()" [formGroup]="clienteForm" autocomplete="off">
+  <div mat-dialog-content>
+    <div class="flexcontent">
+      <mat-form-field class="margright20" appearance="fill"
+                      [ngClass]="{ 'ng-invalid mat-form-field-invalid':  clienteForm.controls['pnombre'].errors && clienteSubmited }">
+        <mat-label>Primer Nombre</mat-label>
+        <input formControlName="pnombre" maxlength="80" type="text" class="inputtext" matInput>
+      </mat-form-field>
+      <mat-form-field class="margright20" appearance="fill">
+        <mat-label>Segundo Nombre</mat-label>
+        <input formControlName="snombre" maxlength="80" type="text" class="inputtext" matInput>
+      </mat-form-field>
+      <mat-form-field class="margright20" appearance="fill"
+                      [ngClass]="{ 'ng-invalid mat-form-field-invalid':  clienteForm.controls['papellido'].errors && clienteSubmited }">
+        <mat-label>Primer Apellido</mat-label>
+        <input formControlName="papellido" maxlength="80" type="text" class="inputtext" matInput>
+      </mat-form-field>
+      <mat-form-field class="margright20" appearance="fill">
+        <mat-label>Segundo Apellido</mat-label>
+        <input formControlName="sapellido" maxlength="80" type="text" class="inputtext" matInput>
+      </mat-form-field>
+      <mat-form-field class="margright20" appearance="fill"
+                      [ngClass]="{ 'ng-invalid mat-form-field-invalid':  clienteForm.controls['direccion'].errors && clienteSubmited }">
+        <mat-label>Direccion</mat-label>
+        <input formControlName="direccion" maxlength="200" type="text" matInput>
+      </mat-form-field>
+      <mat-form-field class="margright20" appearance="fill"
+                      [ngClass]="{ 'ng-invalid mat-form-field-invalid':  clienteForm.controls['telefono'].invalid && clienteSubmited }">
+        <mat-label>Telefono</mat-label>
+        <input formControlName="telefono" type="text" class="inputtext" matInput>
+      </mat-form-field>
+    </div>
+  </div>
+
+<div class="dcenter" mat-dialog-actions>
+  <button class="boton"> Guardar
+    <i class="fa fa-save"></i>
+  </button>
+  <button class="boton margleft20" (click)="Close(false); $event.preventDefault()">Cancelar<i class="fa fa-ban"></i></button>
+</div>
+</form>

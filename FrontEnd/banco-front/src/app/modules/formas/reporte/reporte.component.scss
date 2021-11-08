@@ -1,0 +1,19 @@
+.pdf-viewer {
+  display: block;
+
+  &--relative {
+    ::ng-deep .ng2-pdf-viewer-container {
+      position: relative;
+    }
+  }
+}
+
+.butright {
+  padding-top: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.divbuscar{
+  max-width: 826px;
+}

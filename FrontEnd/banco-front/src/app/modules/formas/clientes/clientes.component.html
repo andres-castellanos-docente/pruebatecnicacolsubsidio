@@ -1,0 +1,64 @@
+<div class="marginauto">
+  <div class="mat-table-scroll padtop" [@subirAnimation]>
+    <button class="boton margbot10" (click)="createDialog()">Crear <i class="fa fa-plus-square"></i></button>
+    <table class="centerdiv" mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="editar">
+        <th class="widh60" mat-header-cell *matHeaderCellDef> Editar</th>
+        <td class="tcenter widh60" mat-cell *matCellDef="let element;let i = index;">
+          <button class="botons" (click)="editar(element, i)"><i class="fa fa-edit"></i>
+          </button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="pnombre">
+        <th class="widh120" mat-header-cell *matHeaderCellDef>Primer Nombre</th>
+        <td class="tcenter widh120" mat-cell
+            *matCellDef="let element"> {{element.pnombre}} </td>
+      </ng-container>
+      <ng-container matColumnDef="snombre">
+        <th class="widh120" mat-header-cell *matHeaderCellDef>Segundo Nombre</th>
+        <td class="tcenter widh120" mat-cell
+            *matCellDef="let element"> {{element.snombre}} </td>
+      </ng-container>
+      <ng-container matColumnDef="papellido">
+        <th class="widh120" mat-header-cell *matHeaderCellDef>Primer Apellido</th>
+        <td class="tcenter widh120" mat-cell
+            *matCellDef="let element"> {{element.papellido}} </td>
+      </ng-container>
+      <ng-container matColumnDef="sapellido">
+        <th class="widh150" mat-header-cell *matHeaderCellDef> Segundo Apellido</th>
+        <td class="tcenter widh150" mat-cell
+            *matCellDef="let element"> {{element.sapellido}} </td>
+      </ng-container>
+      <ng-container matColumnDef="direccion">
+        <th class="widh150" mat-header-cell *matHeaderCellDef> Dirección</th>
+        <td class="tcenter widh150" mat-cell
+            *matCellDef="let element"> {{element.direccion }} </td>
+      </ng-container>
+      <ng-container matColumnDef="telefono">
+        <th class="widh150" mat-header-cell *matHeaderCellDef> Teléfono</th>
+        <td class="tcenter widh150" mat-cell
+            *matCellDef="let element"> {{element.telefono }} </td>
+      </ng-container>
+      <ng-container matColumnDef="cuentas">
+        <th class="widh80" mat-header-cell *matHeaderCellDef> Cuentas</th>
+        <td class="tcenter widh80" mat-cell *matCellDef="let element;let i = index;">
+          <button class="botons" (click)="vercuentas(element, i)"><i class="fas fa-ellipsis-h"></i>
+          </button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="eliminar">
+        <th class="widh80" mat-header-cell *matHeaderCellDef> Eliminar</th>
+        <td class="tcenter widh80" mat-cell *matCellDef="let element;let i = index;">
+          <button class="botons" (click)="eliminar(element, i)"><i class="fa fa-trash"></i>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <div *ngIf="dataSource && dataSource.data.length === 0" class="marginauto centerdiv">No se encontraron registros
+    </div>
+    <mat-paginator class="matselect centerdiv widthmatpag" [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons></mat-paginator>
+  </div>
+</div>

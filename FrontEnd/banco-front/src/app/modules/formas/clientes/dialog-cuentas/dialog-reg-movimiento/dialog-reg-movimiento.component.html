@@ -1,0 +1,34 @@
+<div mat-dialog-title class="flex-container fontEst">
+  <label class="titlematd">Registrar Movimiento</label>
+  <button class="titlebar-icon" (click)="Cerrar(false)">
+    <mat-icon class="close-icon">close</mat-icon>
+  </button>
+</div>
+<form (ngSubmit)="onSubmitRegistrar()" [formGroup]="movimientoForm" autocomplete="off">
+  <div mat-dialog-content>
+    <div class="dcenter margbot10">Número Cuenta: {{numCuenta}}</div>
+    <div class="dcenter margbot10">Saldo Actual: {{saldoAct | number}}</div>
+    <div class="flexcontent">
+
+      <mat-form-field appearance="fill">
+        <mat-label>Tipo Movimiento</mat-label>
+        <mat-select formControlName="debito">
+          <mat-option value=true>Débito</mat-option>
+          <mat-option value=false>Crédito</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="margright20" appearance="fill"
+                      [ngClass]="{ 'ng-invalid mat-form-field-invalid':  movimientoForm.controls['valor'].errors && movimientoSubmited }">
+        <mat-label>Valor</mat-label>
+        <input formControlName="valor" min="1" maxlength="20" type="number" class="inputtext" matInput>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="dcenter" mat-dialog-actions>
+    <button class="boton"> Guardar
+      <i class="fa fa-save"></i>
+    </button>
+    <button class="boton margleft20" (click)="Cerrar(false); $event.preventDefault()">Cancelar<i class="fa fa-ban"></i>
+    </button>
+  </div>
+</form>

@@ -1,0 +1,15 @@
+<div class="topbar flexcenter clearfix" [@derAIzAnimation]>
+  <button class="link" id="menu-button" (click)="app.onMenuButtonClick($event)">
+    <i class="fa fa-align-center"></i>
+  </button>
+  <div class="widdivtitle textcenter"  [@bannerAnimation]="value == antvalue ? true : false">
+    <a [href]="url" target="_blank" class="bannerref widtitle textcenter">
+      <img class="vertalign" [src]="icon_url" *ngIf="value == antvalue"/>
+      <label class="bannerref widlabeltit vertalign"> {{value}}</label>
+    </a>
+  </div>
+
+  <span class="topbar-themeswitcher">
+    <mat-slide-toggle [checked]="darken" (change)="onChange($event.checked)"></mat-slide-toggle>
+  </span>
+</div>
