@@ -3,9 +3,9 @@
 # back prueba (Banco) - Cliente Colsubsidio Andres Castellanos
 
 
-* Descargar dependencias con mvn install
+* Descargar dependencias con "mvn install"
 
-* Iniciar proyecto con mvnw spring-boot:run
+* Iniciar proyecto con "mvn spring-boot:run"
 
 El proyecto usa h2file no es necesario instalar motores
 de BD
