@@ -5,6 +5,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {SharedModule} from "../../../SharedModule";
 import {DatePipe, DecimalPipe} from "@angular/common";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 describe('ReporteComponent', () => {
   let component: ReporteComponent;
@@ -12,7 +13,7 @@ describe('ReporteComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SharedModule, HttpClientTestingModule],
+      imports: [SharedModule, BrowserAnimationsModule, HttpClientTestingModule],
       declarations: [ ReporteComponent ],
       providers: [
         DatePipe, DecimalPipe

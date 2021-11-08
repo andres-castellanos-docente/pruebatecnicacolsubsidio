@@ -4,6 +4,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {SharedModule} from "../../../SharedModule";
 import {ClientesService} from "../../services/clientes.service";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 describe('ClientesComponent', () => {
   let component: ClientesComponent;
@@ -11,7 +12,7 @@ describe('ClientesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SharedModule, HttpClientTestingModule],
+      imports: [SharedModule,BrowserAnimationsModule, HttpClientTestingModule],
       providers: [ClientesService,
       ],
       declarations: [ ClientesComponent ]
